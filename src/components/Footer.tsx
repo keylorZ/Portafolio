@@ -1,20 +1,9 @@
-import { useEffect, useState } from 'react';
-import { ArrowUp, Mail, Phone, MapPin, Eye } from 'lucide-react';
+import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 import { useSiteContent } from '@/context/SiteContentContext';
 
 export default function Footer() {
   const { content } = useSiteContent();
   const personalInfo = content.personalInfo;
-  const [totalVisits, setTotalVisits] = useState<number | null>(null);
-
-  useEffect(() => {
-    fetch('/api/visitas/contador')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data && typeof data.total === 'number') setTotalVisits(data.total);
-      })
-      .catch(() => {});
-  }, []);
 
   const scrollToTop = () =>
     document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth' });
@@ -51,11 +40,6 @@ export default function Footer() {
             © {new Date().getFullYear()} {personalInfo.name}. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
-            {totalVisits !== null && (
-              <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
-                <Eye size={14} /> {totalVisits.toLocaleString('es-CR')} visitas
-              </span>
-            )}
             <button
               onClick={scrollToTop}
               className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-800 text-slate-400 transition-all duration-200 hover:border-teal-400/50 hover:text-teal-300 hover:-translate-y-1"

@@ -21,6 +21,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
-# Fotos subidas desde el panel de administración
-server/uploads

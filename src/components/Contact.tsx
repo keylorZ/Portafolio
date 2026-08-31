@@ -1,9 +1,7 @@
 import { FormEvent, useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useSiteContent } from '@/context/SiteContentContext';
 import Reveal from '@/components/Reveal';
-
-type Status = 'idle' | 'sending' | 'success' | 'error';
 
 export default function Contact() {
   const { content } = useSiteContent();
@@ -11,35 +9,13 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState<Status>('idle');
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
-
-    setStatus('sending');
-    let ok = false;
-    try {
-      const res = await fetch('/api/contacto', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() }),
-      });
-      const data = await res.json();
-      ok = res.ok && data?.ok === true;
-    } catch {
-      ok = false;
-    }
-
-    if (!ok) {
-      setStatus('error');
-      return;
-    }
-
-    setStatus('success');
-    setName('');
-    setEmail('');
-    setMessage('');
+    const subject = encodeURIComponent(`Contacto desde tu portafolio - ${name.trim()}`);
+    const body = encodeURIComponent(`${message.trim()}\n\n— ${name.trim()} (${email.trim()})`);
+    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -155,30 +131,10 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={status === 'sending'}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-teal-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-teal-400 hover:shadow-lg hover:shadow-teal-500/30 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-teal-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-teal-400 hover:shadow-lg hover:shadow-teal-500/30 active:scale-[0.98]"
               >
-                {status === 'sending' ? (
-                  'Enviando...'
-                ) : (
-                  <>
-                    Enviar mensaje <Send size={16} />
-                  </>
-                )}
+                Enviar mensaje <Send size={16} />
               </button>
-
-              {status === 'success' && (
-                <div className="flex items-center gap-2 text-sm text-emerald-400 bg-emerald-500/10 border border-emerald-400/20 rounded-lg px-4 py-3">
-                  <CheckCircle2 size={16} />
-                  ¡Mensaje enviado! Te responderé pronto.
-                </div>
-              )}
-              {status === 'error' && (
-                <div className="flex items-center gap-2 text-sm text-rose-400 bg-rose-500/10 border border-rose-400/20 rounded-lg px-4 py-3">
-                  <AlertCircle size={16} />
-                  No se pudo enviar el mensaje. Intenta de nuevo.
-                </div>
-              )}
             </form>
           </Reveal>
         </div>
