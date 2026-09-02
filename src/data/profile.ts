@@ -9,7 +9,7 @@ export const personalInfo = {
   location: 'Pérez Zeledón, San José, Costa Rica',
   availability: 'Disponibilidad inmediata',
   summary:
-    'Estudiante de Ingeniería en Sistemas con conocimientos en tecnología, desarrollo web, bases de datos, soporte técnico y gestión administrativa. Cuento con experiencia en atención al cliente, manejo de inventarios, organización de información y trabajo en equipo. Me caracterizo por mi capacidad de aprendizaje, responsabilidad, organización, atención al detalle y adaptación a diferentes entornos laborales.',
+    'Estudiante de Ingeniería en Sistemas con conocimientos en tecnología, desarrollo web, bases de datos, soporte técnico, gestión administrativa e inteligencia artificial. Experiencia práctica en creación de aplicaciones y automatización de tareas con herramientas de IA como ChatGPT, Claude, Gemini, Copilot y OpenCode. Cuento con experiencia en atención al cliente, manejo de inventarios, organización de información y trabajo en equipo. Me caracterizo por mi capacidad de aprendizaje, responsabilidad, organización, atención al detalle y adaptación a diferentes entornos laborales.',
   goal:
     'Busco una oportunidad profesional que me permita aplicar y desarrollar mis conocimientos en áreas como soporte técnico, QA, asistencia administrativa, gestión de información, atención al usuario, desarrollo de software y tecnología.',
 };
@@ -29,7 +29,11 @@ export const skillGroups = [
   },
   {
     title: 'Bases de datos',
-    items: ['MySQL', 'MongoDB'],
+    items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Supabase'],
+  },
+  {
+    title: 'Inteligencia artificial y creación con IA',
+    items: ['OpenCode', 'Claude', 'ChatGPT', 'GitHub Copilot', 'Bolt', 'Gemini'],
   },
   {
     title: 'Control de versiones',
@@ -136,6 +140,27 @@ export const defaultContent: SiteContent = {
   education,
   softSkills,
   languages,
-  socialLinks: [],
+  socialLinks: [
+    {
+      id: 'linkedin',
+      platform: 'linkedin',
+      url: 'https://www.linkedin.com/in/keylor-zu%C3%B1iga-jimenez-b35915348/',
+    },
+    {
+      id: 'instagram',
+      platform: 'instagram',
+      url: 'https://www.instagram.com/keylor_zj/?hl=es-la',
+    },
+    {
+      id: 'facebook',
+      platform: 'facebook',
+      url: 'https://www.facebook.com/keylor.zuniga.92?locale=es_LA',
+    },
+    {
+      id: 'github',
+      platform: 'github',
+      url: 'https://github.com/keylorZ',
+    },
+  ],
   photoUrl: null,
 };

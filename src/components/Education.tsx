@@ -1,10 +1,10 @@
-import { GraduationCap, IdCard } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { useSiteContent } from '@/context/SiteContentContext';
 import Reveal from '@/components/Reveal';
 
 export default function Education() {
   const { content } = useSiteContent();
-  const { education, personalInfo } = content;
+  const { education } = content;
 
   return (
     <section id="formacion" className="relative bg-slate-900 py-24 px-6">
@@ -39,18 +39,7 @@ export default function Education() {
           ))}
         </div>
 
-        <Reveal delay={200}>
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/40 p-6 flex items-center gap-4">
-            <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-800 text-slate-400 shrink-0">
-              <IdCard size={20} />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 uppercase tracking-wide">Cédula</p>
-              <p className="text-slate-200 font-medium">{personalInfo.cedula}</p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
+        </div>
     </section>
   );
 }
