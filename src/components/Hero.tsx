@@ -9,16 +9,38 @@ export default function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
-  const renderWaveLetters = (text: string, offset = 0) =>
-    Array.from(text).map((char, i) => (
+  const gradientStops: [number, number, number][] = [
+    [248, 113, 113],
+    [251, 113, 133],
+    [251, 146, 60],
+  ];
+
+  const getGradientColor = (index: number, total: number) => {
+    const t = total <= 1 ? 0 : index / (total - 1);
+    const scaled = t * (gradientStops.length - 1);
+    const stop = Math.min(Math.floor(scaled), gradientStops.length - 2);
+    const local = scaled - stop;
+    const from = gradientStops[stop];
+    const to = gradientStops[stop + 1];
+    const mix = (a: number, b: number) => Math.round(a + (b - a) * local);
+    return `rgb(${mix(from[0], to[0])}, ${mix(from[1], to[1])}, ${mix(from[2], to[2])})`;
+  };
+
+  const renderWaveLetters = (text: string, offset = 0, gradient = false) => {
+    const chars = Array.from(text);
+    return chars.map((char, i) => (
       <span
         key={`${char}-${offset + i}`}
         className="wave-letter"
-        style={{ animationDelay: `${(offset + i) * 0.03}s` }}
+        style={{
+          animationDelay: `${(offset + i) * 0.04}s`,
+          ...(gradient ? { color: getGradientColor(i, chars.length) } : {}),
+        }}
       >
         {char === ' ' ? '\u00A0' : char}
       </span>
     ));
+  };
 
   return (
     <section
@@ -53,9 +75,7 @@ export default function Hero() {
 
           <h1 className="wave-text font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
             {renderWaveLetters('Hola, soy ')}
-            <span className="bg-gradient-to-r from-red-400 via-rose-400 to-orange-400 bg-clip-text text-transparent">
-              {renderWaveLetters(personalInfo.name, 10)}
-            </span>
+            {renderWaveLetters(personalInfo.name, 10, true)}
           </h1>
 
           <p className="text-lg sm:text-xl text-slate-400 font-medium mb-8">
