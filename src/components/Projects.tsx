@@ -11,7 +11,7 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
-            <span className="text-teal-400 text-sm font-semibold tracking-widest uppercase">
+            <span className="text-red-400 text-sm font-semibold tracking-widest uppercase">
               Trabajo destacado
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-3">
@@ -23,14 +23,14 @@ export default function Projects() {
         <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 100}>
-              <div className="group h-full rounded-2xl border border-slate-800 bg-slate-950/60 p-7 flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-400/50 hover:shadow-xl hover:shadow-teal-500/10">
+              <div className="group h-full rounded-2xl border border-slate-800 bg-slate-950/60 p-7 flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:border-red-400/50 hover:shadow-xl hover:shadow-red-500/10">
                 <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-teal-500/10 text-teal-400 transition-colors group-hover:bg-teal-500/20">
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-red-500/10 text-red-400 transition-colors group-hover:bg-red-500/20">
                     <FolderGit2 size={20} />
                   </div>
                   <ArrowUpRight
                     size={18}
-                    className="text-slate-600 transition-all duration-300 group-hover:text-teal-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="text-slate-600 transition-all duration-300 group-hover:text-red-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </div>
                 <h3 className="font-display font-semibold text-white text-lg mb-2.5">
@@ -43,7 +43,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-medium text-teal-300 bg-teal-500/10 border border-teal-400/20 rounded-md px-2 py-1"
+                      className="text-xs font-medium text-red-300 bg-red-500/10 border border-red-400/20 rounded-md px-2 py-1"
                     >
                       {tag}
                     </span>

@@ -11,7 +11,7 @@ export default function Experience() {
       <div className="max-w-4xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
-            <span className="text-teal-400 text-sm font-semibold tracking-widest uppercase">
+            <span className="text-red-400 text-sm font-semibold tracking-widest uppercase">
               Trayectoria
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-3">
@@ -24,10 +24,10 @@ export default function Experience() {
           {experience.map((job, i) => (
             <Reveal key={job.company} delay={i * 120}>
               <div className="relative pl-8 sm:pl-10 pb-14 last:pb-0">
-                <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-teal-400 ring-4 ring-slate-950 shadow-lg shadow-teal-500/40" />
+                <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-red-400 ring-4 ring-slate-950 shadow-lg shadow-red-500/40" />
 
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-7 transition-all duration-300 hover:border-teal-400/40 hover:shadow-lg hover:shadow-teal-500/5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 mb-4">
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-7 transition-all duration-300 hover:border-red-400/40 hover:shadow-lg hover:shadow-red-500/5">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-500/10 text-red-400 mb-4">
                     <Briefcase size={18} />
                   </div>
                   <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
@@ -38,7 +38,7 @@ export default function Experience() {
                       {job.period}
                     </span>
                   </div>
-                  <p className="text-teal-300 text-sm font-medium mb-4">{job.company}</p>
+                  <p className="text-red-300 text-sm font-medium mb-4">{job.company}</p>
                   <ul className="space-y-2">
                     {job.tasks.map((task) => (
                       <li key={task} className="flex gap-2.5 text-sm text-slate-400 leading-relaxed">

@@ -24,7 +24,7 @@ export default function Skills() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
-            <span className="text-teal-400 text-sm font-semibold tracking-widest uppercase">
+            <span className="text-red-400 text-sm font-semibold tracking-widest uppercase">
               Competencias técnicas
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-3">
@@ -38,8 +38,8 @@ export default function Skills() {
             const Icon = icons[i % icons.length];
             return (
               <Reveal key={group.title} delay={i * 70}>
-                <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-all duration-300 hover:border-teal-400/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-500/10">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-teal-500/10 text-teal-400 mb-4">
+                <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-all duration-300 hover:border-red-400/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-red-500/10 text-red-400 mb-4">
                     <Icon size={19} />
                   </div>
                   <h3 className="font-semibold text-white text-sm mb-3">{group.title}</h3>
@@ -69,9 +69,9 @@ export default function Skills() {
                 {softSkills.map((skill) => (
                   <div
                     key={skill}
-                    className="flex items-center gap-2.5 text-sm text-slate-300 rounded-lg border border-slate-800 bg-slate-900/40 px-3.5 py-2.5 transition-colors hover:border-teal-400/30"
+                    className="flex items-center gap-2.5 text-sm text-slate-300 rounded-lg border border-slate-800 bg-slate-900/40 px-3.5 py-2.5 transition-colors hover:border-red-400/30"
                   >
-                    <CheckCircle2 size={16} className="text-teal-400 shrink-0" />
+                    <CheckCircle2 size={16} className="text-red-400 shrink-0" />
                     {skill}
                   </div>
                 ))}
@@ -108,7 +108,7 @@ function LanguageBar({ percent }: { percent: number }) {
   return (
     <div
       ref={ref}
-      className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all duration-1000 ease-out"
+      className="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-400 transition-all duration-1000 ease-out"
       style={{ width: visible ? `${percent}%` : '0%' }}
     />
   );

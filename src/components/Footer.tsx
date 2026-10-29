@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
           <div>
             <p className="font-display text-xl font-bold text-white">
-              Keylor<span className="text-teal-400">.</span>Zúñiga
+              Keylor<span className="text-red-400">.</span>Zúñiga
             </p>
             <p className="text-slate-500 text-sm mt-2 max-w-sm">
               Estudiante de Ingeniería en Sistemas, listo para aportar en soporte técnico,
@@ -23,10 +23,10 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-2.5 text-sm text-slate-400">
-            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 hover:text-teal-300 transition-colors">
+            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 hover:text-red-300 transition-colors">
               <Mail size={15} /> {personalInfo.email}
             </a>
-            <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-teal-300 transition-colors">
+            <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-red-300 transition-colors">
               <Phone size={15} /> {personalInfo.phone}
             </a>
             <span className="flex items-center gap-2">
@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-800 text-slate-400 transition-all duration-200 hover:border-teal-400/50 hover:text-teal-300 hover:-translate-y-1"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-800 text-slate-400 transition-all duration-200 hover:border-red-400/50 hover:text-red-300 hover:-translate-y-1"
               aria-label="Volver arriba"
             >
               <ArrowUp size={16} />

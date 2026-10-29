@@ -60,7 +60,7 @@ export default function Navbar() {
           onClick={() => handleClick('inicio')}
           className="font-display text-lg font-bold text-white tracking-tight"
         >
-          Keylor<span className="text-teal-400">.</span>Zúñiga
+          Keylor<span className="text-red-400">.</span>Zúñiga
         </button>
 
         <div className="hidden md:flex items-center gap-1">
@@ -75,7 +75,7 @@ export default function Navbar() {
               }`}
             >
               {active === link.id && (
-                <span className="absolute inset-0 bg-teal-500/15 rounded-full border border-teal-400/30" />
+                <span className="absolute inset-0 bg-red-500/15 rounded-full border border-red-400/30" />
               )}
               <span className="relative">{link.label}</span>
             </button>
@@ -84,7 +84,7 @@ export default function Navbar() {
 
         <button
           onClick={() => handleClick('contacto')}
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-teal-500 px-5 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-teal-400 hover:shadow-lg hover:shadow-teal-500/30 active:scale-95"
+          className="hidden md:inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 active:scale-95"
         >
           Contáctame
         </button>
@@ -110,7 +110,7 @@ export default function Navbar() {
               onClick={() => handleClick(link.id)}
               className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                 active === link.id
-                  ? 'bg-teal-500/15 text-teal-300'
+                  ? 'bg-red-500/15 text-red-300'
                   : 'text-slate-300 hover:bg-slate-800/60'
               }`}
             >

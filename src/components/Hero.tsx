@@ -15,9 +15,9 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden bg-slate-950 pt-24 pb-16"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 -left-24 w-96 h-96 bg-teal-500/25 rounded-full blur-3xl animate-blob" />
-        <div className="absolute top-40 -right-16 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-24 left-1/3 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute top-0 -left-24 w-96 h-96 bg-red-500/25 rounded-full blur-3xl animate-blob" />
+        <div className="absolute top-40 -right-16 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-24 left-1/3 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-blob animation-delay-4000" />
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -30,19 +30,19 @@ export default function Hero() {
 
       <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div className="text-center md:text-left order-2 md:order-1">
-          <div className="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-4 py-1.5 mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-4 py-1.5 mb-6">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-400" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-400" />
             </span>
-            <span className="text-xs font-medium text-teal-300 tracking-wide">
+            <span className="text-xs font-medium text-red-300 tracking-wide">
               {personalInfo.availability}
             </span>
           </div>
 
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
             Hola, soy{' '}
-            <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-400 via-rose-400 to-orange-400 bg-clip-text text-transparent">
               {personalInfo.name}
             </span>
           </h1>
@@ -54,13 +54,13 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-10">
             <button
               onClick={() => scrollTo('contacto')}
-              className="rounded-full bg-teal-500 px-7 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-teal-400 hover:shadow-xl hover:shadow-teal-500/30 hover:-translate-y-0.5 active:scale-95"
+              className="rounded-full bg-red-500 px-7 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-red-400 hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-0.5 active:scale-95"
             >
               Contáctame
             </button>
             <button
               onClick={() => scrollTo('proyectos')}
-              className="rounded-full border border-slate-700 bg-slate-900/60 px-7 py-3 text-sm font-semibold text-slate-200 backdrop-blur transition-all duration-200 hover:border-teal-400/50 hover:text-teal-300 hover:-translate-y-0.5 active:scale-95"
+              className="rounded-full border border-slate-700 bg-slate-900/60 px-7 py-3 text-sm font-semibold text-slate-200 backdrop-blur transition-all duration-200 hover:border-red-400/50 hover:text-red-300 hover:-translate-y-0.5 active:scale-95"
             >
               Ver proyectos
             </button>
@@ -69,18 +69,18 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <a
               href={`mailto:${personalInfo.email}`}
-              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-teal-300 transition-colors"
+              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-red-300 transition-colors"
             >
-              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-teal-400/50 transition-colors">
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-red-400/50 transition-colors">
                 <Mail size={16} />
               </span>
               {personalInfo.email}
             </a>
             <a
               href={`tel:${personalInfo.phone.replace(/\s/g, '')}`}
-              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-teal-300 transition-colors"
+              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-red-300 transition-colors"
             >
-              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-teal-400/50 transition-colors">
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-red-400/50 transition-colors">
                 <Phone size={16} />
               </span>
               {personalInfo.phone}
@@ -102,7 +102,7 @@ export default function Hero() {
       <button
         onClick={() => scrollTo('perfil')}
         aria-label="Bajar a la siguiente sección"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-teal-300 transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-red-300 transition-colors animate-bounce"
       >
         <ArrowDown size={22} />
       </button>

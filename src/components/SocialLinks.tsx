@@ -12,7 +12,7 @@ export default function SocialLinks() {
     <section id="redes" className="relative bg-slate-900 py-20 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <Reveal>
-          <span className="text-teal-400 text-sm font-semibold tracking-widest uppercase">
+          <span className="text-red-400 text-sm font-semibold tracking-widest uppercase">
             Sígueme
           </span>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-3 mb-10">
@@ -33,7 +33,7 @@ export default function SocialLinks() {
                   rel="noreferrer noopener"
                   aria-label={platform.label}
                   title={platform.label}
-                  className="group flex items-center justify-center w-14 h-14 rounded-2xl border border-slate-800 bg-slate-950/60 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-teal-400/50 hover:text-teal-300 hover:shadow-lg hover:shadow-teal-500/10"
+                  className="group flex items-center justify-center w-14 h-14 rounded-2xl border border-slate-800 bg-slate-950/60 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-red-400/50 hover:text-red-300 hover:shadow-lg hover:shadow-red-500/10"
                 >
                   <Icon size={22} />
                 </a>
