@@ -9,6 +9,17 @@ export default function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+  const renderWaveLetters = (text: string, offset = 0) =>
+    Array.from(text).map((char, i) => (
+      <span
+        key={`${char}-${offset + i}`}
+        className="wave-letter"
+        style={{ animationDelay: `${(offset + i) * 0.03}s` }}
+      >
+        {char === ' ' ? '\u00A0' : char}
+      </span>
+    ));
+
   return (
     <section
       id="inicio"
@@ -40,10 +51,10 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
-            Hola, soy{' '}
+          <h1 className="wave-text font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
+            {renderWaveLetters('Hola, soy ')}
             <span className="bg-gradient-to-r from-red-400 via-rose-400 to-orange-400 bg-clip-text text-transparent">
-              {personalInfo.name}
+              {renderWaveLetters(personalInfo.name, 10)}
             </span>
           </h1>
 
