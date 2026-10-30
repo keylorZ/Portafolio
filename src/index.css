@@ -6,10 +6,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0b0710;
+  color: #fff;
 }
 
 .font-display {
@@ -17,8 +20,8 @@ body {
 }
 
 ::selection {
-  background-color: #dc2626;
-  color: white;
+  background-color: #f9a8d4;
+  color: #1a1020;
 }
 
 @keyframes blob {
@@ -48,19 +51,18 @@ body {
   animation: float 5s ease-in-out infinite;
 }
 
-@keyframes wave {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-0.22em); }
-  60% { transform: translateY(0.06em); }
+.magnetic-word {
+  display: inline-block;
+  white-space: nowrap;
 }
 
-.wave-letter {
+.magnetic-space {
+  white-space: pre;
+}
+
+.magnetic-letter {
   display: inline-block;
   will-change: transform;
-}
-
-.wave-text:hover .wave-letter {
-  animation: wave 1s ease-in-out infinite;
 }
 
 ::-webkit-scrollbar {
@@ -68,14 +70,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0b0710;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #7f1d1d;
+  background: rgba(253, 164, 175, 0.35);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b91c1c;
+  background: rgba(253, 164, 175, 0.55);
 }

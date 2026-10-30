@@ -48,75 +48,75 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-slate-950/85 backdrop-blur-lg shadow-lg shadow-black/20 border-b border-slate-800/60'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <button
-          onClick={() => handleClick('inicio')}
-          className="font-display text-lg font-bold text-white tracking-tight"
-        >
-          Keylor<span className="text-red-400">.</span>Zúñiga
-        </button>
-
-        <div className="hidden md:flex items-center gap-1">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleClick(link.id)}
-              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                active === link.id
-                  ? 'text-white'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              {active === link.id && (
-                <span className="absolute inset-0 bg-red-500/15 rounded-full border border-red-400/30" />
-              )}
-              <span className="relative">{link.label}</span>
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={() => handleClick('contacto')}
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-red-400 hover:shadow-lg hover:shadow-red-500/30 active:scale-95"
-        >
-          Contáctame
-        </button>
-
-        <button
-          className="md:hidden text-slate-200"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Abrir menú"
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
-      </nav>
-
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          open ? 'max-h-96 border-t border-slate-800/60' : 'max-h-0'
-        } bg-slate-950/95 backdrop-blur-lg`}
+        className={`mx-auto max-w-6xl overflow-hidden rounded-2xl border transition-all duration-300 ${
+          scrolled
+            ? 'border-white/15 bg-[#120b18]/80 shadow-[0_18px_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-2xl'
+            : 'border-white/10 bg-white/[0.04] backdrop-blur-xl'
+        }`}
       >
-        <div className="flex flex-col px-6 py-4 gap-1">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleClick(link.id)}
-              className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                active === link.id
-                  ? 'bg-red-500/15 text-red-300'
-                  : 'text-slate-300 hover:bg-slate-800/60'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+        <nav className="flex h-16 items-center justify-between px-4 sm:px-6">
+          <button
+            onClick={() => handleClick('inicio')}
+            className="font-display text-lg font-bold tracking-tight text-white"
+          >
+            Keylor<span className="text-rose-200">.</span>Zúñiga
+          </button>
+
+          <div className="hidden items-center gap-1 md:flex">
+            {links.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => handleClick(link.id)}
+                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                  active === link.id ? 'text-white' : 'text-white/50 hover:text-white/80'
+                }`}
+              >
+                {active === link.id && (
+                  <span className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.08]" />
+                )}
+                <span className="relative">{link.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => handleClick('contacto')}
+            className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-rose-200 via-pink-200 to-amber-100 px-5 py-2 text-sm font-semibold text-[#1a1020] shadow-[0_12px_30px_-14px_rgba(251,113,133,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-14px_rgba(251,113,133,1)] active:scale-95 md:inline-flex"
+          >
+            Contáctame
+          </button>
+
+          <button
+            className="text-white/80 transition-colors hover:text-white md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Abrir menú"
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </nav>
+
+        <div
+          className={`overflow-hidden border-white/10 transition-all duration-300 md:hidden ${
+            open ? 'max-h-96 border-t bg-white/[0.03]' : 'max-h-0'
+          }`}
+        >
+          <div className="flex flex-col gap-1 px-4 py-4">
+            {links.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => handleClick(link.id)}
+                className={`rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
+                  active === link.id
+                    ? 'bg-white/[0.08] text-rose-200'
+                    : 'text-white/60 hover:bg-white/[0.06] hover:text-white'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </header>

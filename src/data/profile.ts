@@ -2,16 +2,16 @@ import type { SiteContent } from '@/types/content';
 
 export const personalInfo = {
   name: 'Keylor Zúñiga Jiménez',
-  title: 'Estudiante de Ingeniería en Sistemas',
-  cedula: '1-1941-0035',
+  title: 'Ingeniero en Sistemas',
+  cedula: '119410035',
   phone: '+506 8563-3772',
   email: 'zunigakeylor@gmail.com',
   location: 'Pérez Zeledón, San José, Costa Rica',
   availability: 'Disponibilidad inmediata',
   summary:
-    'Estudiante de Ingeniería en Sistemas con conocimientos en tecnología, desarrollo web, bases de datos, soporte técnico, gestión administrativa e inteligencia artificial. Experiencia práctica en creación de aplicaciones y automatización de tareas con herramientas de IA como ChatGPT, Claude, Gemini, Copilot y OpenCode. Cuento con experiencia en atención al cliente, manejo de inventarios, organización de información y trabajo en equipo. Me caracterizo por mi capacidad de aprendizaje, responsabilidad, organización, atención al detalle y adaptación a diferentes entornos laborales.',
+    'Ingeniero en Sistemas con conocimientos en tecnología, desarrollo web, bases de datos, soporte técnico y gestión administrativa. Cuento con experiencia utilizando herramientas informáticas, gestionando información, resolviendo problemas y trabajando en equipo.',
   goal:
-    'Busco una oportunidad profesional que me permita aplicar y desarrollar mis conocimientos en áreas como soporte técnico, QA, asistencia administrativa, gestión de información, atención al usuario, desarrollo de software y tecnología.',
+    'Interesado en oportunidades relacionadas con soporte técnico, asistencia administrativa, QA, gestión de información, atención al usuario, tecnología y desarrollo de software.',
 };
 
 export const skillGroups = [
@@ -57,20 +57,27 @@ export const projects = [
   {
     title: 'Sistema Web Marketplace',
     description:
-      'Desarrollo de una aplicación web para la visualización y gestión de productos, utilizando tecnologías como HTML, CSS, JavaScript y Node.js.',
+      'Catálogo web de joyería con visualización de productos e interfaz dinámica, desarrollado con HTML, CSS, JavaScript y Node.js.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+    url: 'https://septembersix.netlify.app/',
   },
   {
     title: 'API REST con Node.js y MongoDB',
     description:
-      'Desarrollo de una API REST con operaciones CRUD para la gestión y almacenamiento de información mediante MongoDB.',
+      'Implementación de una API REST para la gestión de información mediante operaciones CRUD utilizando Node.js y MongoDB.',
     tags: ['Node.js', 'MongoDB', 'API REST'],
   },
   {
     title: 'Sistema de Base de Datos',
     description:
-      'Diseño e implementación de bases de datos y consultas SQL utilizando MySQL para la gestión de información.',
+      'Diseño e implementación de bases de datos y consultas SQL utilizando MySQL.',
     tags: ['MySQL', 'SQL', 'Modelado de datos'],
+  },
+  {
+    title: 'Portafolio Web',
+    description:
+      'Desarrollo de un portafolio web personal para presentar proyectos, habilidades y conocimientos relacionados con desarrollo de software y tecnología.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS'],
   },
 ];
 
@@ -80,11 +87,10 @@ export const experience = [
     role: 'Ayudante de Cocina',
     period: 'Octubre 2025 – Actualidad',
     tasks: [
-      'Apoyo en la preparación y elaboración de alimentos.',
+      'Apoyo en la preparación de alimentos.',
       'Organización y limpieza del área de trabajo.',
-      'Trabajo en equipo en ambientes de alta demanda.',
-      'Cumplimiento de normas de higiene, seguridad y organización.',
-      'Apoyo en diferentes tareas operativas según las necesidades del establecimiento.',
+      'Trabajo en equipo en entornos de alta demanda.',
+      'Cumplimiento de normas de higiene y seguridad.',
     ],
   },
   {
@@ -94,10 +100,6 @@ export const experience = [
     tasks: [
       'Atención y asesoría a clientes.',
       'Organización y control de inventarios.',
-      'Gestión y organización de productos.',
-      'Apoyo en diferentes actividades operativas del establecimiento.',
-      'Resolución de consultas y atención de las necesidades de los clientes.',
-      'Mantenimiento del orden y control de la mercadería.',
     ],
   },
 ];
@@ -124,6 +126,7 @@ export const softSkills = [
   'Trabajo en equipo',
   'Responsabilidad y compromiso',
   'Pensamiento crítico',
+  'Adaptación a diferentes funciones',
   'Licencia de conducir B1',
 ];
 

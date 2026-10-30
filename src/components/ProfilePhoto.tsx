@@ -13,20 +13,20 @@ export default function ProfilePhoto() {
   }, [src]);
 
   return (
-    <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-      <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-red-400 via-rose-400 to-orange-400 opacity-70 blur-xl animate-pulse" />
-      <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-red-400 via-rose-400 to-orange-400" />
-      <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-800 border-4 border-slate-950 flex items-center justify-center">
+    <div className="relative h-56 w-56 sm:h-72 sm:w-72">
+      <div className="absolute -inset-4 animate-pulse rounded-full bg-gradient-to-tr from-rose-300/50 via-pink-300/40 to-amber-200/50 blur-2xl" />
+      <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-rose-200 via-pink-200 to-amber-100 opacity-80" />
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10">
         {!imageFailed ? (
           <img
             src={src}
             alt={content.personalInfo.name}
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             onError={() => setImageFailed(true)}
           />
         ) : (
-          <div className="flex flex-col items-center justify-center gap-2 text-slate-500">
-            <User size={80} strokeWidth={1.2} />
+          <div className="flex flex-col items-center justify-center gap-2 text-white/40">
+            <User size={72} strokeWidth={1.2} />
             <span className="text-xs font-medium tracking-wide">Foto pendiente</span>
           </div>
         )}

@@ -1,18 +1,23 @@
+import { useRef } from 'react';
 import { Mail, Phone, MapPin, ArrowDown } from 'lucide-react';
 import { useSiteContent } from '@/context/SiteContentContext';
 import ProfilePhoto from '@/components/ProfilePhoto';
+import { useMagneticLetters } from '@/hooks/useMagneticLetters';
 
 export default function Hero() {
   const { content } = useSiteContent();
   const personalInfo = content.personalInfo;
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useMagneticLetters(titleRef);
 
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   const gradientStops: [number, number, number][] = [
-    [248, 113, 113],
-    [251, 113, 133],
-    [251, 146, 60],
+    [253, 164, 175],
+    [249, 168, 212],
+    [253, 230, 138],
   ];
 
   const getGradientColor = (index: number, total: number) => {
@@ -26,98 +31,112 @@ export default function Hero() {
     return `rgb(${mix(from[0], to[0])}, ${mix(from[1], to[1])}, ${mix(from[2], to[2])})`;
   };
 
-  const renderWaveLetters = (text: string, offset = 0, gradient = false) => {
-    const chars = Array.from(text);
-    return chars.map((char, i) => (
-      <span
-        key={`${char}-${offset + i}`}
-        className="wave-letter"
-        style={{
-          animationDelay: `${(offset + i) * 0.04}s`,
-          ...(gradient ? { color: getGradientColor(i, chars.length) } : {}),
-        }}
-      >
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ));
+  const renderMagneticLetters = (text: string, gradient = false) => {
+    const total = Array.from(text).length;
+    let index = 0;
+
+    return text
+      .split(/(\s+)/)
+      .filter(Boolean)
+      .map((word, wordIndex) => {
+        const chars = Array.from(word);
+        const wordStart = index;
+        index += chars.length;
+
+        if (/^\s+$/.test(word)) {
+          return (
+            <span key={`space-${wordIndex}`} className="magnetic-space">
+              {' '}
+            </span>
+          );
+        }
+
+        return (
+          <span key={`word-${wordIndex}`} className="magnetic-word">
+            {chars.map((char, i) => (
+              <span
+                key={`${char}-${wordStart + i}`}
+                data-magnetic-letter
+                className="magnetic-letter"
+                style={
+                  gradient
+                    ? { color: getGradientColor(wordStart + i, total) }
+                    : undefined
+                }
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+        );
+      });
   };
 
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden bg-slate-950 pt-24 pb-16"
+      className="relative flex min-h-screen items-center px-6 pb-20 pt-28"
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 -left-24 w-96 h-96 bg-red-500/25 rounded-full blur-3xl animate-blob" />
-        <div className="absolute top-40 -right-16 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-24 left-1/3 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-blob animation-delay-4000" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-      </div>
-
-      <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-        <div className="text-center md:text-left order-2 md:order-1">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-4 py-1.5 mb-6">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="order-2 text-center md:order-1 md:text-left">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 backdrop-blur-xl">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-200 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-200" />
             </span>
-            <span className="text-xs font-medium text-red-300 tracking-wide">
+            <span className="text-xs font-medium tracking-wide text-rose-100/80">
               {personalInfo.availability}
             </span>
           </div>
 
-          <h1 className="wave-text font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
-            {renderWaveLetters('Hola, soy ')}
-            {renderWaveLetters(personalInfo.name, 10, true)}
+          <h1
+            ref={titleRef}
+            className="relative mb-4 font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl"
+          >
+            {renderMagneticLetters('Hola, soy ')}
+            {renderMagneticLetters(personalInfo.name, true)}
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-400 font-medium mb-8">
+          <p className="mb-8 text-lg font-medium text-white/55 sm:text-xl">
             {personalInfo.title} · Soporte técnico · Desarrollo de software
           </p>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-10">
+          <div className="mb-10 flex flex-wrap justify-center gap-3 md:justify-start">
             <button
               onClick={() => scrollTo('contacto')}
-              className="rounded-full bg-red-500 px-7 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-red-400 hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-0.5 active:scale-95"
+              className="rounded-full bg-gradient-to-r from-rose-200 via-pink-200 to-amber-100 px-7 py-3 text-sm font-semibold text-[#1a1020] shadow-[0_16px_40px_-16px_rgba(251,113,133,0.8)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-16px_rgba(251,113,133,0.9)] active:scale-95"
             >
               Contáctame
             </button>
             <button
               onClick={() => scrollTo('proyectos')}
-              className="rounded-full border border-slate-700 bg-slate-900/60 px-7 py-3 text-sm font-semibold text-slate-200 backdrop-blur transition-all duration-200 hover:border-red-400/50 hover:text-red-300 hover:-translate-y-0.5 active:scale-95"
+              className="rounded-full border border-white/15 bg-white/[0.05] px-7 py-3 text-sm font-semibold text-white/80 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.08] hover:text-white active:scale-95"
             >
               Ver proyectos
             </button>
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-4">
+          <div className="flex flex-wrap justify-center gap-4 md:justify-start">
             <a
               href={`mailto:${personalInfo.email}`}
-              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-red-300 transition-colors"
+              className="group flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-rose-200"
             >
-              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-red-400/50 transition-colors">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] transition-colors group-hover:border-rose-200/40 group-hover:bg-white/[0.08]">
                 <Mail size={16} />
               </span>
               {personalInfo.email}
             </a>
             <a
               href={`tel:${personalInfo.phone.replace(/\s/g, '')}`}
-              className="group flex items-center gap-2 text-sm text-slate-400 hover:text-red-300 transition-colors"
+              className="group flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-rose-200"
             >
-              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800 group-hover:border-red-400/50 transition-colors">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] transition-colors group-hover:border-rose-200/40 group-hover:bg-white/[0.08]">
                 <Phone size={16} />
               </span>
               {personalInfo.phone}
             </a>
-            <span className="flex items-center gap-2 text-sm text-slate-400">
-              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border border-slate-800">
+            <span className="flex items-center gap-2 text-sm text-white/50">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05]">
                 <MapPin size={16} />
               </span>
               {personalInfo.location}
@@ -125,15 +144,28 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="order-1 md:order-2 flex justify-center animate-float">
-          <ProfilePhoto />
+        <div className="order-1 flex justify-center md:order-2">
+          <div className="relative animate-float">
+            <div className="rounded-[2.75rem] border border-white/10 bg-white/[0.035] p-6 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)] backdrop-blur-lg sm:p-8">
+              <ProfilePhoto />
+            </div>
+
+            <div className="absolute -left-6 top-10 hidden items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-2 text-xs font-medium text-white/70 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.9)] backdrop-blur-lg sm:flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-200" />
+              Soporte técnico
+            </div>
+            <div className="absolute -right-4 bottom-12 hidden items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-2 text-xs font-medium text-white/70 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.9)] backdrop-blur-lg sm:flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-200" />
+              Desarrollo web
+            </div>
+          </div>
         </div>
       </div>
 
       <button
         onClick={() => scrollTo('perfil')}
         aria-label="Bajar a la siguiente sección"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-red-300 transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/35 transition-colors hover:text-rose-200"
       >
         <ArrowDown size={22} />
       </button>
